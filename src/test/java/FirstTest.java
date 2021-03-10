@@ -1,36 +1,50 @@
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class FirstTest {
 
+    // this method will resolve before each test method
+    @BeforeEach
+    void beforeEachTest() {
+        System.out.println("Test is running...");
+    }
+
+    @AfterEach
+    void afterEachTest() {
+        System.out.println("Test has resolved.");
+    }
+
     @Test
-    void test() {
+    @DisplayName("Testing returnBool() method in Utility class")
+    void returnBoolTest() {
         Boolean actual = Utility.returnBool();
         assertTrue(actual);
     }
 
     @Test
-    void isBiggerTest() {
-        Boolean actual = Utility.isLarger(5,3);
+    @Disabled("This test is currently disabled")
+    void isLargerTest(){
+        Boolean actual = Utility.isLarger(5, 3);
         assertTrue(actual);
     }
 
     @Test
     void addTest() {
-        int actual = Utility.addInts(10, 21);
         int expected = 31;
+        int actual = Utility.addInts(10, 21);
 
         assertEquals(expected, actual);
     }
 
     @Test
     void addAnotherTest() {
-        int actual = Utility.addInts(15, 11);
         int expected = 26;
+        int actual = Utility.addInts(15, 11);
 
         assertEquals(expected, actual);
     }
+
 
 }
